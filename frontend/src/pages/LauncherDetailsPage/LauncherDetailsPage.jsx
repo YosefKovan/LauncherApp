@@ -1,6 +1,8 @@
 import { useParams, Link } from "react-router";
 import useFetch from "../../hooks/useFetch";
 import Message from "../../components/Message/Message";
+import Table from "../../components/LauncherTable/LauncherTable";
+import "./LauncherDetailsPage.css"
 
 const BASE_URL = "http://localhost:3000/api/launchers"
 
@@ -13,19 +15,12 @@ function LauncherDetailsPage() {
   
 
   return (
-    <main>
-       <Link to="/">Back</Link> 
+    <main className="launch-details-page">
+      <Link to="/">Back</Link> 
       {error && <Message messageType="error" content={error.message}/>} 
       {!loading && !error &&apiData && (
         <div>
-          <ul>
-            <li>{apiData.launcher._id}</li>
-            <li>{apiData.launcher.city}</li>
-            <li>{apiData.launcher.rocketType}</li>
-            <li>{apiData.launcher.latitude}</li>
-            <li>{apiData.launcher.longitude}</li>
-            <li>{apiData.launcher.name}</li>
-          </ul>
+          <Table launcher={apiData.launcher}/>
         </div>
       )}
     </main>

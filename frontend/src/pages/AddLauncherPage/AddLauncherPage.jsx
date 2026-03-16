@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useSend from "../../hooks/useSend";
 import Message from "../../components/Message/Message";
+import "./AddLauncherPage.css"
 
 const URL = "http://localhost:3000/api/launchers"
 
@@ -28,10 +29,10 @@ function AddLAuncher(){
     }
 
     return(
-        <main className="add-launch-page">
-            {error && <Message messageType="error" content={error.message}/>}
-            {apiData && <Message messageType="success" content={apiData.message}/>}
+        <main className="launch-page">
             <form onSubmit={submitForm}>
+                 {error && <Message messageType="error" content={error.message}/>}
+            {apiData && <Message messageType="success" content={apiData.message}/>}
                 <div className="form-group">
                     <input type="text" placeholder="Please enter name" value={name} onChange={e=>setName(e.target.value)}/>
                 </div>

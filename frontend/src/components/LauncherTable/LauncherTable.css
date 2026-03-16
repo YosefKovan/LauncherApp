@@ -1,0 +1,21 @@
+
+.launcher-table{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 3rem;
+  text-align: center;
+  table-layout: auto;
+  text-overflow: ellipsis;
+}
+
+.launcher-table .row, td{
+  border: 1px solid #dddddd;  
+  text-align: center;
+  padding: 8px;
+
+}
+
+.launcher-table tr:nth-child(even) {
+  background-color: #dddddd;
+}

@@ -1,5 +1,5 @@
 import useFetch from "../../hooks/useFetch";
-import Table from "../../components/Table/Table";
+import Table from "../../components/HomeTable/HomeTable";
 
 const URL = "http://localhost:3000/api/launchers";
 

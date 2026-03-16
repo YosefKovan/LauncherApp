@@ -1,0 +1,51 @@
+.launch-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.launch-page form{
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+
+.launch-page form .form-group{
+    width: 100%;
+}
+
+.launch-page form .form-group input{
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    border: 2px grey solid;
+    box-sizing: border-box;
+}
+
+
+.launch-page form .form-group select{
+    width: 50%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    border: 2px grey solid;
+    box-sizing: border-box;
+}
+
+.launch-page form button{
+    background-color: black;
+    color: white;
+    padding: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 2.5rem;
+}

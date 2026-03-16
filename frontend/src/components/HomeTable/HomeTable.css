@@ -1,0 +1,20 @@
+.home-table{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.home-table td, th {
+  border: 1px solid #dddddd;
+  padding: 1rem;
+}
+
+.home-table tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.home-table a{
+  color: rgb(28, 28, 190);
+}
