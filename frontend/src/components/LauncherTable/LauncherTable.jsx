@@ -6,15 +6,20 @@ function Card({ launcher }) {
   function getAllRows(){
     
     const rows = []
+    
+    let index = 0;
 
     for(const key in launcher){
       rows.push(
-        <tr className="row">
+        <tr className="row" key={index}>
           <td>{key}</td>
           <td>{launcher[key]}</td>
         </tr>
       )
+
+      index++;
     }
+
 
     return rows;
   }

@@ -10,11 +10,27 @@
 .launch-details-page a{
     width: fit-content;
     text-decoration: none;
-    background-color: #1b75cf;
+    background-color: #000000;
     font-size: 1.6rem;
     color: white;
     padding: 1rem 3rem;
     border-radius: 0.5rem;
     font-weight: 500;
+}
 
+.launch-details-page .main-section{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.delete-btn{
+    width: fit-content;
+    color: rgb(3, 3, 3);
+    background-color: rgb(255, 135, 135);
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    font-weight: 600;
 }

@@ -28,6 +28,20 @@
 .home-page .form-section form input, select{
     width: 100%;
     box-sizing: border-box;
-    font-size: 1.3rem;
-    padding: 1rem 2rem;
+    font-size: 1.6rem;
+    padding: 0.5rem 2rem;
 }
+
+.home-page .form-section form input, select{
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1.6rem;
+    padding: 0.5rem 2rem;
+}
+
+.home-page .form-section form .btn{
+    width: fit-content;
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+}
+

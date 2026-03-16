@@ -11,32 +11,42 @@ function HomePage() {
   
   const [dataToDisplay, setDataToDisplay] = useState([]);
   const [selected, setSelected] = useState("all");
-  const [search, serSearch] = useState("");
-
+  const [search, setSearch] = useState("");
   
-  useEffect(()=>{
-
-    if(!apiData) return;
+  function clearFields(e){
+    e.preventDefault()
     
-  
+    setSelected("all");
+    setSearch("");
+
+    setDataToDisplay(apiData.launchers)
+
+  }
+
+  function filterData(e){
+    e.preventDefault();
+    
     const display = apiData.launchers.filter((data)=>{
-      if(selected !== "all" && data.rocketType !== selected){
+      if(data.rocketType !== selected && search !== data.city){
         return false
       }
-
-      if(search !== "" && !data.city.startsWith(search)){
-        
-        return false;
-      }
-      
-      console.log("In here", data.city, search)
-      
+            
       return true;
     })
 
     setDataToDisplay(display);
 
-  }, [apiData, selected, search])
+  }
+  
+  useEffect(()=>{
+
+    if(!apiData) return;
+    
+    setDataToDisplay(apiData.launchers);
+
+  }, [apiData])
+
+  
 
   return (
     <main className="home-page">
@@ -46,14 +56,16 @@ function HomePage() {
         <section className="form-section">
           <form>
             <div className="form-group">
-              <input value={search} onChange={e=>serSearch(e.target.value)}/>
+              <input value={search} onChange={(e)=>setSearch(e.target.value)} placeholder="Search for city.."/>
             </div>
             <div className="form-group">
-              <select value={selected} onChange={e=>setSelected(e.target.value)}>
+              <select value={selected} onChange={(e)=>setSelected(e.target.value)}>
                 <option value="all" >All</option>
                 {RocketOptions.map((option)=><option value={option}>{option}</option>)}
               </select>
             </div>
+            <button className="btn search-btn" onClick={filterData}>Search</button>
+            <button className="btn clear-btn" onClick={(e)=>{clearFields(e)}} >Reset</button>
           </form>
         </section>
         <section className="table-section">
