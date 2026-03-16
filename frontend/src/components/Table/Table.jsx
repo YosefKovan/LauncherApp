@@ -1,4 +1,5 @@
 import "./Table.css";
+import { Link } from "react-router";
 
 function Table({launchers}) {
   
@@ -15,6 +16,7 @@ function Table({launchers}) {
           <th>Rocket Type</th>
           <th>Latitude</th>
           <th>Longitude</th>
+          <th>Go To</th>
         </tr>
       </thead>
       <tbody>
@@ -25,6 +27,7 @@ function Table({launchers}) {
             <td>{launcher.rocketType}</td>
             <td>{launcher.latitude}</td>
             <td>{launcher.longitude}</td>
+            <td><Link to={`/launcher/${launcher._id}`}>Review</Link></td>
           </tr>
         ))}
       </tbody>

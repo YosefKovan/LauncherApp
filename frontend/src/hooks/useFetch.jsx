@@ -8,21 +8,24 @@ function useFetch(url) {
   useEffect(() => {
     async function fetchData() {
       
+      setLoading(true);
+
       try {
         const response = await fetch(url);
 
         const data = await response.json();
 
         if (!response.ok) {
-            throw {message : data.message || "Unknown error occured", statusCode : response.statusCode}
+            throw {message : data.message || "Unknown error occured", statusCode : response.status}
         }
         
-        console.log("data", data);
         
         setApiData(data);
 
       } catch (error) {
         setError({message : error.message || "Unknown error occured", statusCode : error.statusCode || 500})
+      }finally{
+        setLoading(false);
       }
     }
 

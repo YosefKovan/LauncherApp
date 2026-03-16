@@ -1,0 +1,15 @@
+
+.message{
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem;
+    color: black;
+}
+
+.success{
+    background-color: rgb(229, 255, 190);
+}
+
+.error{
+    background-color: rgb(255, 203, 203);
+}
