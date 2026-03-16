@@ -24,12 +24,11 @@ export async function getLauncherById(id){
     return result;
 }
 
-
 export async function deleteLauncher(id){
 
     const result = await Launcher.deleteOne({_id : id});
 
     if(!result || !result.acknowledged || result.deletedCount < 1){
-        throw new AppError(402, "error occured when deleting the launch");
+        throw new AppError(400, "unable to delete from database with the given id");
     }
 }

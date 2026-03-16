@@ -24,8 +24,6 @@ export async function getLauncherById(req, res, next) {
   }
 }
 
-
-
 export async function addLauncher(req, res, next) {
   
   try {
