@@ -1,6 +1,8 @@
 import AppError from "../errors/app.errors.js"
 
 function errorMiddleware(err, req, res, next){
+    
+    console.log(err)
 
     if(err instanceof AppError){
         return res.status(err.code).json({message : err.message, statusCode : err.code});
