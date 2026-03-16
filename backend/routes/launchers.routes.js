@@ -11,5 +11,5 @@ router.post("/", launchersController.addLauncher);
 
 router.delete("/:id", launchersController.deleteLauncher);
 
-export default launchersController;
+export default router;
 
