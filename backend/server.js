@@ -3,12 +3,15 @@ import errorMiddleware from './middleware/error.middleware.js';
 import launcherRoute from "./routes/launchers.routes.js"; 
 import dotenv from "dotenv"
 import mongoConnection from "./database/mongo.connection.js";
+import cors from "cors";
 
 const PORT = process.env.PORT || 3000;
 
 dotenv.config();
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 
