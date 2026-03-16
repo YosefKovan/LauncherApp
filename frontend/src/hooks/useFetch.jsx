@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function useFetch(url) {
   const [loading, setLoading] = useState(false);
@@ -11,11 +11,13 @@ function useFetch(url) {
       try {
         const response = await fetch(url);
 
-        const data = response.json();
+        const data = await response.json();
 
         if (!response.ok) {
             throw {message : data.message || "Unknown error occured", statusCode : response.statusCode}
         }
+        
+        console.log("data", data);
         
         setApiData(data);
 
