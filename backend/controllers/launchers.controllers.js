@@ -27,7 +27,9 @@ export async function getLauncherById(req, res, next) {
 
 export async function addLauncher(req, res, next) {
   try {
-    await launcherService.addLauncherService(id);
+
+    const {name, rocketType, latitude, longitude, city} = req.body;
+    await launcherService.addLauncherService(name, rocketType, latitude, longitude, city);
     return res.status(200).json({message : "launcher added successfully."});
   } catch (err) {
     next(err);
