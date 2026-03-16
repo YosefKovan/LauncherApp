@@ -3,6 +3,7 @@ import Table from "../../components/HomeTable/HomeTable";
 import { useEffect, useState } from "react";
 import {RocketOptions} from "../../consts/consts";
 import "./HomePage.css"
+import Loader from "../../components/Loader/Loader"
 
 const URL = "http://localhost:3000/api/launchers";
 
@@ -50,7 +51,7 @@ function HomePage() {
 
   return (
     <main className="home-page">
-      {loading && <div>Loading...</div>}
+      {loading && <Loader/>}
       {!loading && !error && apiData &&(
         <>
         <section className="form-section">

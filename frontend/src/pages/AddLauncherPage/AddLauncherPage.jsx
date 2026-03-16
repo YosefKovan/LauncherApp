@@ -2,10 +2,10 @@ import { useState } from "react";
 import useSend from "../../hooks/useSend";
 import Message from "../../components/Message/Message";
 import "./AddLauncherPage.css"
+import Loader from "../../components/Loader/Loader"
+import {RocketOptions} from "../../consts/consts"
 
 const URL = "http://localhost:3000/api/launchers"
-
-const options = ["Shahab3", "Fetah110", "Radwan", "Kheibar"];
 
 function AddLAuncher(){
      
@@ -13,7 +13,7 @@ function AddLAuncher(){
 
     const [name, setName] = useState("");
     const [city, setCity] = useState("");
-    const [rocketType, setRocketType] = useState(options[0]);
+    const [rocketType, setRocketType] = useState(RocketOptions[0]);
     const [latitude, setLatitude] = useState("");
     const [longitude, setLongtitude] = useState("");
     
@@ -28,6 +28,10 @@ function AddLAuncher(){
         sendData(URL, {method : "POST", headers, body : JSON.stringify(body)});
     }
 
+    if(loading){
+        return <Loader/>
+    }
+
     return(
         <main className="launch-page">
             <form onSubmit={submitForm}>
@@ -38,7 +42,7 @@ function AddLAuncher(){
                 </div>
                 <div className="form-group">
                     <select value={rocketType} onChange={e=>setRocketType(e.target.value)}>
-                        {options.map((option, index)=>(
+                        {RocketOptions.map((option, index)=>(
                             <option key={index} value={option}>{option}</option>
                         ))}
                     </select>
