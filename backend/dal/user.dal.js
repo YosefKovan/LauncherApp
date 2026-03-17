@@ -17,12 +17,26 @@ export async function createUserDal(username, password, email, role){
     }
 }
 
-
 export async function getUserByUsername(username){
 
     const user = await User.findOne({username});
 
     return user;
 
+}
+
+export async function updateLoginTime(){
+
+    await User.update({lastLogin : Date.now()});
+}
+
+export async function deleteUser(id){
+
+    const result = await User.deleteOne({_id : id});
+}
+
+export async function updateUser(id, fieldsToUpdate){
+
+    const result = await User.findByIdAndUpdate(id, fieldsToUpdate);
 }
 

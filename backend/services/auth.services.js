@@ -24,7 +24,6 @@ export async function loginUserService(username, password){
     return token;
 }
 
-
 export async function createUserService(username, password, email, role){
     
     const user = await userDal.createUserDal(username, password, email, role);
