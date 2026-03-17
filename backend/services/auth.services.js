@@ -18,7 +18,8 @@ export async function loginUserService(username, password){
         throw new AppError(401, "password is incorrect")
     }
     
-
+    await userDal.updateLoginTime();
+    
     const token = signToken({id : user._id, username : username, role : user.role});
 
     return token;
@@ -31,11 +32,31 @@ export async function createUserService(username, password, email, role){
     return {username : user.username, email : user.email, role : user.role, id : user._id};
 }
 
-export async function updateUserService(username, password, email, role){
+export async function updateUserService(id, username, password, email, role){
+    
+    let update = {};
 
+    if(username){
+        update = {username};
+    }
+
+    if(password){
+        update = {...update, password}
+    }
+
+    if(email){
+        update = {...update, email}
+    }
+
+    if(role){
+        update = {...update, role}
+    }
+
+    await userDal.updateUser(id, update);
 }
 
 export async function deleteUserService(id){
 
-
+    await userDal.deleteUserById(id);
 }
+

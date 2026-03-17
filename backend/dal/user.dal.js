@@ -30,7 +30,7 @@ export async function updateLoginTime(){
     await User.update({lastLogin : Date.now()});
 }
 
-export async function deleteUser(id){
+export async function deleteUserById(id){
 
     const result = await User.deleteOne({_id : id});
 }

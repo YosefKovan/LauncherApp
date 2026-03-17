@@ -43,13 +43,17 @@ export async function createUserController(req, res, next){
 export async function updateUserController(req, res, next){
 
     try{
-        const {username, password, email, role} = req.body;
+        const {username, password, email, role, id} = req.body;
+         
+        if(!id){
+            throw new AppError(400, "must include an id");
+        }
 
         if(!username && !password && !email && !role){
             throw new AppError(400, "must include at least one field to update");
         }
         
-        await authService.updateUserService(username, password, email, role);
+        await authService.updateUserService(id, username, password, email, role);
         
         return res.status(201).json({message : "user was updated successfully."});
 
@@ -71,5 +75,18 @@ export async function deleteUserController(req, res, next){
     }catch(err){
         next(err);
     }
+}
+
+export async function getCurrentUser(req, res, next){
+
+    try{
+        const {payload} = req;
+           
+        return res.status(201).json({currentUser : payload});
+
+    }catch(err){
+        next(err);
+    }
+
 }
 
