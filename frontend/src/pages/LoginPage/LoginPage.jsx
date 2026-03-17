@@ -3,12 +3,14 @@ import useSend from "../../hooks/useSend"
 import {useNavigate} from "react-router";
 import Message from "../../components/Message/Message";
 import "./LoginPage.css"
+import useUser from "../../store/useUser";
 
 const URL = "http://localhost:3000/api/auth/login"
 
 function LoginPage(){
     
     const {sendData, error} = useSend();
+    const setRole = useUser((state)=>state.setRole);
 
     const navigate = useNavigate();
 
@@ -27,6 +29,7 @@ function LoginPage(){
         })
 
         if(!error){
+            setRole(data.user.role);
             localStorage.setItem("token", data.token);
             return navigate("/launchers");
         }

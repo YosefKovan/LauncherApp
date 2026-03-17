@@ -26,7 +26,6 @@ function EditUserPage() {
     async function getInitialData(){
         
         const token = localStorage.getItem("token");
-
         const [data, error] = await sendData(GET_URL + `/${id}`, {method : "GET", headers : {Authorization : "Bearer " + token}});
         
         console.log(data);

@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+import useLogout from "./useLogout";
 
 function useFetch(url) {
   const [loading, setLoading] = useState(false);
   const [apiData, setApiData] = useState(null);
   const [error, setError] = useState(null);
 
-  const navigate = useNavigate(); 
+  const {logout} = useLogout();
 
   useEffect(() => {
     async function fetchData() {
@@ -25,8 +25,7 @@ function useFetch(url) {
         
 
         if(response.status === 401){
-          localStorage.removeItem("token");
-          navigate("/")
+           logout();
         }
         
         setApiData(data);

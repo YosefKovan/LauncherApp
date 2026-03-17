@@ -5,3 +5,5 @@ const useUser = create((set)=>({
     role : null,
     setRole : (newRole)=>set({role : newRole})
 }))
+
+export default useUser;

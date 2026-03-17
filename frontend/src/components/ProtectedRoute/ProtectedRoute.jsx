@@ -4,11 +4,13 @@ import { Navigate, Outlet } from 'react-router';
 function ProtectedRoute({roles}){
 
     const token = localStorage.getItem("token");
+    
+    if(!token){
+        return <Navigate to="/"/>
+    }
 
-    console.log(jwtDecode(token));
     
-    
-    if(!token || !roles.includes(jwtDecode(token).role)){
+    if(!roles.includes(jwtDecode(token).role)){
         return <Navigate to="/"/>
     }
 

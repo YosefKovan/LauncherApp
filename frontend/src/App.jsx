@@ -27,12 +27,11 @@ function App() {
         
         <Route element={<ProtectedRoute roles={["ADMIN", "INTELLIGENCE", "AIRFORCE"]}/>}>
           <Route path="/launchers" element={<HomePage />} />
-          
+          <Route path="/launcher/:id" element={<LauncherDetailsPage />} />
         </Route>
 
         <Route element={<ProtectedRoute roles={["ADMIN", "INTELLIGENCE"]}/>}> 
             <Route path="/create-launcher" element={<AddLAuncher />} />
-            <Route path="/launcher/:id" element={<LauncherDetailsPage />} />
         </Route>
         
       </Routes>

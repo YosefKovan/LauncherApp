@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AppError from "../../error/app.error";
+import useLogout from "./useLogout";
 import { useNavigate } from "react-router";
 
 
@@ -10,6 +10,8 @@ function useSend() {
    const [apiData, setApiData] = useState(null);
    const [error, setError] = useState(null);
    const [loading, setLoading] = useState(false);
+
+    const {logout} = useLogout();
 
    async function sendData(url, sendData) {
     
@@ -24,8 +26,7 @@ function useSend() {
        
       //this means the token is not vaild
       if(response.status === 401){
-        localStorage.removeItem("token");
-        navigate("/");
+        logout();
       }
        
 
