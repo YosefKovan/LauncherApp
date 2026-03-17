@@ -1,10 +1,11 @@
 import express from 'express'
 import errorMiddleware from './middleware/error.middleware.js';
 import launcherRoute from "./routes/launchers.routes.js"; 
+import authRoutes from "./routes/auth.routes.js"
 import dotenv from "dotenv"
 import mongoConnection from "./database/mongo.connection.js";
 import cors from "cors";
-import authRoutes from "./routes/auth.routes.js";
+;
 
 const PORT = process.env.PORT || 3000;
 
@@ -17,6 +18,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/launchers", launcherRoute);
+
+app.use("/api/auth", authRoutes);
 
 app.use(errorMiddleware);
 
