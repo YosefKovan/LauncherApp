@@ -1,6 +1,28 @@
+import User from "../models/user.model.js";
+import AppError from "../errors/app.errors.js";
 
-
-export async function createUserDal(){
-
+export async function createUserDal(username, password, email, role){
     
+    try{
+        const result = await User.create({username, password, email, role, lastLogin : null});
+    
+        return result;
+    }
+    catch(err){
+        if(err.errorResponse.code === 11000){
+            throw new AppError(400, "username must be unique");
+        }
+
+        throw err;
+    }
 }
+
+
+export async function getUserByUsername(username){
+
+    const user = await User.findOne({username});
+
+    return user;
+
+}
+

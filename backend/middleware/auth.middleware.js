@@ -11,12 +11,11 @@ function authMiddleware(req, res, next){
             throw new AppError(401, "Unauthorized - Token not provided");
         }
         
-        if(!bearerToken.startWith("Bearer ")){
+        if(!bearerToken.startsWith("Bearer ")){
             throw new AppError(401, "Unauthorized - must include a valid Bearer token");
         }
 
-
-        const token = bearerToken.split(" ")[0];
+        const token = bearerToken.split(" ")[1];
          
         const payload = validateToken(token);
 

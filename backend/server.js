@@ -5,7 +5,6 @@ import authRoutes from "./routes/auth.routes.js"
 import dotenv from "dotenv"
 import mongoConnection from "./database/mongo.connection.js";
 import cors from "cors";
-;
 
 const PORT = process.env.PORT || 3000;
 
@@ -17,9 +16,13 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use("/api/launchers", launcherRoute);
+app.get("/", (req, res, next)=>{
+  return res.json({message : "hello world"});
+})
 
 app.use("/api/auth", authRoutes);
+
+app.use("/api/launchers", launcherRoute);
 
 app.use(errorMiddleware);
 

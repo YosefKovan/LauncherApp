@@ -31,9 +31,9 @@ export async function createUserController(req, res, next){
             throw new AppError(400, "must include all fields.");
         }
         
-        await authService.createUserService(username, password, email, role)
+        const user = await authService.createUserService(username, password, email, role)
         
-        return res.status(201).json({message : "user was added successfully."})
+        return res.status(201).json({message : "user was added successfully.", user})
     }catch(err){
         next(err);
     }
