@@ -1,0 +1,44 @@
+
+.login-page{
+    display: flex;
+    justify-content: center;
+}
+
+.login-page form{
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.login-page form .form-header{
+    text-align: center;
+    font-size: 5rem;
+}
+
+.login-page form .form-group{
+    width : 100%;
+     
+}
+
+.login-page form .form-group input{
+    width : 100%;
+    font-size: 1rem;
+    padding: 0.5rem;
+    font-size: 1.6rem;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    border-bottom: 2px black solid;
+}
+
+.login-page form .login-submit-button{
+    font-size: 1.5rem;
+    border-radius: 2.5rem;
+    padding: 1rem;
+    background-color: black;
+    border: none;
+    color: white;
+    cursor: pointer;
+}

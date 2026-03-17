@@ -3,10 +3,12 @@ import "./AdminForm.css";
 import Message from "../Message/Message";
 
 function AdminForm(props) {
-  return (
+  
+  
+    return (
     <form className="admin-form" onSubmit={props.handleSubmit}>
       {props.error && <Message messageType="error" content={props.error.message}/>}
-      {props.error && <Message messageType="success" content={props.success.message}/>}
+      {props.success && <Message messageType="success" content={props.success.message}/>}
       <div className="form-group">
         <input
           type="text"
@@ -17,7 +19,7 @@ function AdminForm(props) {
       </div>
       <div className="form-group">
         <input
-          type="password"
+          type="text"
           value={props.password}
           onChange={(e) => props.setPassword(e.target.value)}
           placeholder="Enter Password..."
@@ -36,6 +38,7 @@ function AdminForm(props) {
           value={props.role}
           onChange={(e) => props.setRole(e.target.value)}
         >
+          <option value={null}>Choose one</option>
           {Roles.map((role, index) => (
             <option key={index} value={role}>
               {role}

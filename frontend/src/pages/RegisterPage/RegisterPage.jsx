@@ -12,8 +12,9 @@ function RegisterPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [role, setRole] = useState(Roles[0]);
+  const [role, setRole] = useState(null);
   
+
   function handleSubmit(e){
 
     e.preventDefault();
@@ -37,6 +38,7 @@ function RegisterPage() {
 
   return (
     <main>
+      <h1>Create User</h1>
       <AdminForm
         error={error}
         success={apiData}

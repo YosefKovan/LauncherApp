@@ -1,8 +1,12 @@
 import { useState } from "react";
 import AppError from "../../error/app.error";
+import { useNavigate } from "react-router";
+
 
 function useSend() {
-  
+   
+   const navigate = useNavigate();
+
    const [apiData, setApiData] = useState(null);
    const [error, setError] = useState(null);
    const [loading, setLoading] = useState(false);
@@ -18,6 +22,13 @@ function useSend() {
 
       const data = await response.json();
        
+      //this means the token is not vaild
+      if(response.status === 401){
+        localStorage.removeItem("token");
+        navigate("/");
+      }
+       
+
       if (!response.ok) {
           throw {message : data.message || "Unknown error occured", statusCode : response.status}
       }
