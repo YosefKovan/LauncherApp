@@ -4,6 +4,7 @@ import launcherRoute from "./routes/launchers.routes.js";
 import dotenv from "dotenv"
 import mongoConnection from "./database/mongo.connection.js";
 import cors from "cors";
+import authRoutes from "./routes/auth.routes.js";
 
 const PORT = process.env.PORT || 3000;
 
