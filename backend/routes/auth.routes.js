@@ -7,11 +7,15 @@ const router = express.Router();
 
 router.post("/login", authController.loginUserController);
 
-router.get("/getUser", authMiddleware, authController.getCurrentUser);
+router.get("/getUser", roleMiddleWare("ADMIN", "AIRFORCE", "INTELLIGENCE"), authMiddleware, authController.getCurrentUser);
+
+router.get("/getUser/:id", authMiddleware, roleMiddleWare("ADMIN"), authController.getUserById);
 
 router.post("/create",authMiddleware, roleMiddleWare("ADMIN"), authController.createUserController);
 
 router.put("/update",authMiddleware, roleMiddleWare("ADMIN"), authController.updateUserController);
+
+router.get("/allUsers", authMiddleware, roleMiddleWare("ADMIN"), authController.getAllUsers)
 
 router.delete("/delete/:id",authMiddleware, roleMiddleWare("ADMIN"), authController.deleteUserController);
 

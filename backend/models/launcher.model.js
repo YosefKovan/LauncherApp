@@ -8,7 +8,8 @@ const launcherSchema = new Schema(
         rocketType : {enum : ["Shahab3", "Fetah110", "Radwan", "Kheibar"], type : String},
         latitude : Number,
         longitude : Number, 
-        city : String
+        city : String,
+        destroyed : {type : Boolean, default : false}
     }
 )
 

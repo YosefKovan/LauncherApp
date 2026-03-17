@@ -32,3 +32,9 @@ export async function deleteLauncher(id){
         throw new AppError(400, "unable to delete from database with the given id");
     }
 }
+
+
+export async function updateDestroyed(id){
+
+    const result = await Launcher.findByIdAndUpdate(id, {destroyed : true});
+}

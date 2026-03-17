@@ -18,11 +18,11 @@ export async function loginUserService(username, password){
         throw new AppError(401, "password is incorrect")
     }
     
-    await userDal.updateLoginTime();
+    // await userDal.updateLoginTime();
     
     const token = signToken({id : user._id, username : username, role : user.role});
 
-    return token;
+    return {token, user : {id : user._id, username : username, role : user.role}};
 }
 
 export async function createUserService(username, password, email, role){
@@ -58,5 +58,14 @@ export async function updateUserService(id, username, password, email, role){
 export async function deleteUserService(id){
 
     await userDal.deleteUserById(id);
+}
+
+export async function getAllUsers(){
+
+    return await userDal.getAllUsers();
+}
+
+export async function getUserById(id){
+    return await userDal.getUserById(id)
 }
 

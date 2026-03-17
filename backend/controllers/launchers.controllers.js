@@ -53,3 +53,15 @@ export async function deleteLauncher(req, res, next) {
     next(err);
   }
 }
+
+
+export async function destroyed(req, res, next){
+
+  try{
+    const {id} = req.params;
+    await launcherService.destroyed(id);
+    return res.status(201).json({message : "launcher was updated to destroyed"});
+  }catch(error){
+    next(err);
+  }
+}

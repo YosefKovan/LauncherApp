@@ -40,3 +40,11 @@ export async function updateUser(id, fieldsToUpdate){
     const result = await User.findByIdAndUpdate(id, fieldsToUpdate);
 }
 
+export async function getAllUsers(){
+
+    return await User.find({});
+}
+
+export async function getUserById(id){
+    return await User.findOne({_id : id});
+}

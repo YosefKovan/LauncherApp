@@ -25,3 +25,8 @@ export async function deleteLauncher(id){
 
     return await launcherDal.deleteLauncher(id)
 }
+
+
+export async function destroyed(id){
+    return await launcherDal.updateDestroyed(id);
+}

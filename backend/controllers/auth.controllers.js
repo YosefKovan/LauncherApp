@@ -11,9 +11,9 @@ export async function loginUserController(req, res, next){
             throw new AppError(400, "must include username and password");
         }
 
-        const token = await authService.loginUserService(username, password);
+        const response = await authService.loginUserService(username, password);
         
-        return res.status(200).json({token, message : "login was successful."})
+        return res.status(200).json({...response,  message : "login was successful."})
 
     }catch(err){
         next(err);
@@ -80,10 +80,33 @@ export async function deleteUserController(req, res, next){
 export async function getCurrentUser(req, res, next){
 
     try{
-        const {payload} = req;
-           
-        return res.status(201).json({currentUser : payload});
+        const user = await authService.getUserById(req.payload.id);
+        return res.status(201).json({user});
+    }catch(err){
+        next(err);
+    }
 
+}
+
+export async function getAllUsers(req, res, next){
+
+    try{
+        
+        const users = await authService.getAllUsers();
+        return res.status(200).json({users});
+
+    }catch(err){
+        next(err);
+    }
+
+}
+
+export async function getUserById(req, res, next){
+
+    try{
+        const {id} = req.params; 
+        const user = await authService.getUserById(id);
+        return res.status(201).json({user});
     }catch(err){
         next(err);
     }

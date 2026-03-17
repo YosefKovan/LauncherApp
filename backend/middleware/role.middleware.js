@@ -1,12 +1,12 @@
 import AppError from "../errors/app.errors.js"
 
 
-function roleMiddleWare(role){
+function roleMiddleWare(...roles){
 
     return (req, res, next)=>{
 
-        if(req.payload.role.toUpperCase() !== role.toUpperCase()){
-            throw new AppError(401, "You are not authorized must have higher permissions.")
+        if(!roles.includes(req.payload.role)){
+            throw new AppError(403, "You are not authorized must have higher permissions.")
         }
 
         next();
