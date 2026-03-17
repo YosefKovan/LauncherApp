@@ -4,12 +4,15 @@ import HomePage from "./pages/HomePage/HomePage";
 import AddLAuncher from "./pages/AddLauncherPage/AddLauncherPage";
 import LauncherDetailsPage from "./pages/LauncherDetailsPage/LauncherDetailsPage"
 import Navbar from "./components/Navbar/Navbar";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar/>
       <Routes>
+         <Route path="/register" element={<RegisterPage />} />
+
         <Route path="/" element={<HomePage />} />
         <Route path="/create" element={<AddLAuncher />} />
         <Route path="/launcher/:id" element={<LauncherDetailsPage />} />
